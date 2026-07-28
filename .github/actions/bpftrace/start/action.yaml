@@ -42,6 +42,9 @@ runs:
             export BPFTRACE_BTF="/boot/btf-\$(uname -r)"
           fi
 
+          rm -f ${{ inputs.output-path }}/bpftrace.out
+          rm -f ${{ inputs.output-path }}/bpftrace.err
+
           bpftrace ${{ inputs.script }} -q \
             ${{ inputs.args }} \
             > ${{ inputs.output-path }}/bpftrace.out \
